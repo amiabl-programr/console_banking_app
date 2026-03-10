@@ -106,7 +106,15 @@ namespace ConsoleBankingApp
             // check if email exists
             foreach (var account in accounts)
             {
-                Console.WriteLine(account);
+                if (email == account.email && password == account.password)
+                {
+                    Console.WriteLine("Proceed to dashboard");
+                    ShowDashboard();
+                    break;
+                } else
+                {
+                    Console.WriteLine("Account not found");
+                }
             }
 
         }
@@ -114,7 +122,7 @@ namespace ConsoleBankingApp
 
         static void ShowDashboard()
         {
-            //here
+            Console.WriteLine("Welcome to dashboard");
         }
         static void Deposit()
         {
