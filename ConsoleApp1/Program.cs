@@ -1,35 +1,31 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Reflection.Metadata;
 
 namespace ConsoleBankingApp
 {
     class Bank
     {
         static bool WelcomeToApp = true;
-        static List<Accounts> accounts = new List<Accounts>();
-        class Accounts
-        {
-            public string firstName;
-            public string lastName;
-            public string email;
-            public string password;
-            public decimal Balance;
-
-        }
+        static List<Account> accounts = new List<Account>();
+        
         static void Main(string[] args)
         {
-
+           
 
             while (WelcomeToApp)
             {
-                Console.WriteLine("Select an option: ");
+               
+
+                ShowWelcomeMenu();
+
+               
                 int selectedOption = Convert.ToInt32(Console.ReadLine());
 
                 if (selectedOption == 1)
                 {
-                    // run register''6
-                    Register();
+                     Register();
                 }
                 else if (selectedOption == 2)
                 {
@@ -41,10 +37,7 @@ namespace ConsoleBankingApp
                     // Logout
                     WelcomeToApp = false;
                 }
-                else
-                {
-                    ShowWelcomeMenu();
-                }
+               
             }
         }
 
@@ -72,18 +65,14 @@ namespace ConsoleBankingApp
             Console.WriteLine("3. Email: ");
             string email = Console.ReadLine();
 
-            Console.WriteLine("4. Email: ");
+            Console.WriteLine("4. Password: ");
             string password = Console.ReadLine();
 
             Console.WriteLine("5. Initial Deposit: ");
             decimal initialDeposit = Convert.ToDecimal(Console.ReadLine());
 
-            Accounts newUser = new Accounts
+            Account newUser = new Account(firstname, lastname, email, password)
             {
-                firstName = firstname,
-                lastName = lastname,
-                email = email,
-                password = password,
                 Balance = initialDeposit
             };
 
@@ -96,8 +85,29 @@ namespace ConsoleBankingApp
         {
             Console.WriteLine("Welcome to the Login page!");
 
-           
+            Console.Write("Enter your email: ");
+            string email = Console.ReadLine() ?? "";
 
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                Console.WriteLine("Invalid email input.");
+            }
+
+            Console.Write("Enter your password: ");
+            string password = Console.ReadLine() ?? "";
+
+            if (string.IsNullOrWhiteSpace(password))
+            {
+                Console.WriteLine("Invalid password input.");
+            }
+
+            
+
+            // check if email exists
+            foreach (var account in accounts)
+            {
+                Console.WriteLine(account);
+            }
 
         }
 
