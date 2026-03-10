@@ -88,6 +88,7 @@ namespace ConsoleBankingApp
             };
 
             accounts.Add(newUser);
+
             Console.WriteLine("Congratulations! ");
         }
 
@@ -95,11 +96,7 @@ namespace ConsoleBankingApp
         {
             Console.WriteLine("Welcome to the Login page!");
 
-            Console.WriteLine("Enter Email: ");
-            string email = Console.ReadLine();
-
-            Console.WriteLine("Enter password: ");
-            string password = Console.ReadLine();
+           
 
 
         }
