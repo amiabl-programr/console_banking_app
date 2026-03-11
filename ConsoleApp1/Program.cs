@@ -193,7 +193,27 @@ namespace ConsoleBankingApp
         static void Withdraw()
         {
             // here
-         }
+            Console.WriteLine("--- Withdraw Money ---");
+            Console.Write("Enter amount to withdraw: ");
+            int amount;
+            //int amount = Convert.ToInt32(Console.ReadLine());
+
+            foreach (var acc in accounts)
+            {
+                if (int.TryParse(Console.ReadLine(), out amount) && amount > 0 && amount <= acc.Balance)
+                {
+                    acc.Balance -= amount;
+                }
+                else if (amount > acc.Balance)
+                {
+                    Console.WriteLine("Insufficient Funds");
+                }
+                else
+                {
+                    Console.WriteLine("Enter a valid amount");
+                }
+            }
+        }
         static void CheckBalance()
         {
             foreach (var account in accounts)
