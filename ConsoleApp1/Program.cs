@@ -133,6 +133,7 @@ namespace ConsoleBankingApp
                             Withdraw();
                         } else if (dashboardOptions == 6)
                         {
+                            whileLoggedIn = false;
                             Logout();
                         }
                         else
@@ -160,20 +161,39 @@ namespace ConsoleBankingApp
             Console.WriteLine("1. Check Balance");
             Console.WriteLine("2. Deposit");
             Console.WriteLine("3. Withdraw");
-            Console.WriteLine("4. Transfer");
-            Console.WriteLine("5. Transaction history");
+            //Console.WriteLine("4. Transfer");
+            //Console.WriteLine("5. Transaction history");
             Console.WriteLine("6. Logout");
             Console.WriteLine();
             Console.Write("Select an option: ");
         }
         static void Deposit()
         {
-            //here
+            Console.WriteLine("--- Deposit Money ---");
+            Console.Write("Enter amount to deposit: ");
+            int amount;
+            //int amount = Convert.ToInt32(Console.ReadLine());
+
+            foreach(var acc in accounts)
+            {
+                if (int.TryParse(Console.ReadLine(), out amount) && amount > 0)
+                {
+                    acc.Balance += amount;
+                    Console.WriteLine("Deposit Successful");
+                    Console.WriteLine($"New Balance: {acc.Balance}");
+                }
+                else
+                {
+                    Console.WriteLine("Enter a valid amount");
+                }
+            }
+
+            
         }
         static void Withdraw()
         {
             // here
-        }
+         }
         static void CheckBalance()
         {
             foreach (var account in accounts)
