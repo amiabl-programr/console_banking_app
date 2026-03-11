@@ -164,7 +164,22 @@ namespace ConsoleBankingApp
         }
         static void CheckBalance()
         {
-          //here
+            foreach (var account in accounts)
+            {
+                Console.WriteLine($"Your current balance is {account.Balance}");
+                Console.WriteLine();
+                Console.WriteLine("Press any key to return to the menu...");
+                string reuturnToMenu = Console.ReadLine();
+
+                if (!string.IsNullOrEmpty(reuturnToMenu))
+                {
+                    ShowDashboard();
+                }
+                else
+                {
+                    Console.WriteLine("Press any key to return to the menu!");
+                }
+            }
         }
     }
 }
