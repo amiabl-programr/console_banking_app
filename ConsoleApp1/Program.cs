@@ -152,7 +152,19 @@ namespace ConsoleBankingApp
 
         static void ShowDashboard()
         {
-          //here
+            Console.WriteLine("=====================");
+            Console.WriteLine("Welcome to your dashboard");
+            Console.WriteLine("=====================");
+
+            Console.WriteLine("Welcome");
+            Console.WriteLine("1. Check Balance");
+            Console.WriteLine("2. Deposit");
+            Console.WriteLine("3. Withdraw");
+            Console.WriteLine("4. Transfer");
+            Console.WriteLine("5. Transaction history");
+            Console.WriteLine("6. Logout");
+            Console.WriteLine();
+            Console.Write("Select an option: ");
         }
         static void Deposit()
         {
