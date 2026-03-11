@@ -12,11 +12,11 @@ namespace ConsoleBankingApp
         
         static void Main(string[] args)
         {
-           
+            
 
             while (WelcomeToApp)
             {
-               
+              
 
                 ShowWelcomeMenu();
 
@@ -34,8 +34,7 @@ namespace ConsoleBankingApp
                 }
                 else if (selectedOption == 3)
                 {
-                    // Logout
-                    WelcomeToApp = false;
+                   Logout();
                 }
                
             }
@@ -51,6 +50,12 @@ namespace ConsoleBankingApp
             Console.WriteLine("3. Logout");
             Console.WriteLine("==========================");
         }
+
+        static void Logout()
+        {
+            WelcomeToApp = false;
+        }
+
         static void Register()
         {
             Console.WriteLine("Welcome to the Register page!");
@@ -101,7 +106,8 @@ namespace ConsoleBankingApp
                 Console.WriteLine("Invalid password input.");
             }
 
-            
+
+            bool whileLoggedIn = true;
 
             // check if email exists
             foreach (var account in accounts)
@@ -109,8 +115,32 @@ namespace ConsoleBankingApp
                 if (email == account.email && password == account.password)
                 {
                     Console.WriteLine("Proceed to dashboard");
-                    ShowDashboard();
-                    break;
+                    Console.WriteLine();
+
+                    while (whileLoggedIn)
+                    {
+                        ShowDashboard();
+                        int dashboardOptions = Convert.ToInt32(Console.ReadLine());
+                        if (dashboardOptions == 1)
+                        {
+                            CheckBalance();
+                        } else if (dashboardOptions == 2)
+                        {
+                            Deposit();
+                        } 
+                        else if (dashboardOptions == 3)
+                        {
+                            Withdraw();
+                        } else if (dashboardOptions == 6)
+                        {
+                            Logout();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Choose the right option!");
+                        }
+                    }
+                    
                 } else
                 {
                     Console.WriteLine("Account not found");
@@ -122,7 +152,7 @@ namespace ConsoleBankingApp
 
         static void ShowDashboard()
         {
-            Console.WriteLine("Welcome to dashboard");
+          //here
         }
         static void Deposit()
         {
@@ -134,7 +164,7 @@ namespace ConsoleBankingApp
         }
         static void CheckBalance()
         {
-            //here
+          //here
         }
     }
 }
